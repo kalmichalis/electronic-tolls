@@ -127,7 +127,7 @@ class Root(windows):
         self.delReports.pack(side=BOTTOM)
 
         # Κουμπί που ελέγχει αν ένα όχημα περνάει ή όχι με τη μέθοδο elegxos
-        self.nextCar= self.buttons("ΕΛΕΓΧΟΣ ΟΧΗΜΑΤΟΣ")
+        self.nextCar= self.buttons("ΔΙΕΛΕΥΣΗ ΟΧΗΜΑΤΟΣ")
         self.nextCar.config(command=self.elegxos)
         self.nextCar.pack(side= BOTTOM)
 
