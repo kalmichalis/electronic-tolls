@@ -1,5 +1,22 @@
-import sqlite3
-from datetime import date
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2024 Καλαποθαράκος Μιχαήλ και Νικολιάς Μπλέτσας Γεώργιος
+#
+# This file is part of electronic-tolls.
+#
+# electronic-tolls is free software: you can redistribute it and/or modify
+# it under the terms of the MIT License as published by
+# the Free Software Foundation, either version of the License, or
+# (at your option) any later version.
+#
+# electronic-tolls is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MIT License for more details.
+#
+# You should have received a copy of the MIT License
+# along with electronic-tolls.  If not, see <https://opensource.org/licenses/MIT>.
+
 
 """Η λογική πάει ως εξής: Θες μια κλάση που να λειτουργεί ως διεπαφή προγράμματος και βάσης δεδομένων. Κάθε μέθοδος επιτελεί
 μια από τις λειτουργίες της sqlite3, προσαρμοσμένες στις ανάγκες του προγράμματος. Προσοχή στον κώδικα της insert() και της
