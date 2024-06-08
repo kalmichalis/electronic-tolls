@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2024 Καλαποθαράκος Μιχαήλ και Νικολιάς Μπλέτσας Γεώργιος
+# Copyright (c) 2022 Καλαποθαράκος Μιχαήλ και Νικολιάς Μπλέτσας Γεώργιος
 #
 # This file is part of electronic-tolls.
 #
@@ -16,6 +16,10 @@
 #
 # You should have received a copy of the MIT License
 # along with electronic-tolls.  If not, see <https://opensource.org/licenses/MIT>.
+
+import sqlite3
+import database as vasi
+import tollClasses as klasi
 
 
 class mainProgramm():

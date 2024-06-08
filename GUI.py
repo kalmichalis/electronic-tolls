@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2024 Καλαποθαράκος Μιχαήλ και Νικολιάς Μπλέτσας Γεώργιος
+# Copyright (c) 2022 Καλαποθαράκος Μιχαήλ και Νικολιάς Μπλέτσας Γεώργιος
 #
 # This file is part of electronic-tolls.
 #
@@ -17,7 +17,12 @@
 # You should have received a copy of the MIT License
 # along with electronic-tolls.  If not, see <https://opensource.org/licenses/MIT>.
 
-
+import tkinter as tk
+import tkinter.font as f
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+import model as m
 class windows(tk.Tk):
     """ Κλάση παραθύρου στην οποία βασίζονται όλες οι υποκλάσεις παραθύρων. Θέτει τα βασικά τεχνικά χαρακτηριστικά
         για κάθε παράθυρο (π.χ. μέγεθος) και κάθε μια από τις μεθόδους του δημιουργεί τα αντίστοιχα αισθητικά
