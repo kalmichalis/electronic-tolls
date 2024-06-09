@@ -17,6 +17,7 @@
 # You should have received a copy of the MIT License
 # along with electronic-tolls.  If not, see <https://opensource.org/licenses/MIT>.
 
+from tkcalendar import Calendar
 import tkinter as tk
 import tkinter.font as f
 from tkinter import *
@@ -140,7 +141,7 @@ class Root(windows):
         self.delVehicle.pack(side=BOTTOM)
 
         # Κουμπί που διαγράφει όλες τις τιμές του πίνακα reports της database με τη μέθοδο history
-        self.delReports = self.buttons("ΕΚΚΑΘΑΡΙΣΗ ΙΣΤΟΡΙΚΟΥ")
+        self.delReports = self.buttons("ΕΚΚΑΘΑΡΙΣΗ ΙΣΤΟΡΙΚΟΥ ΠΡΟΓΡΑΜΜΑΤΟΣ")
         self.delReports.config(command=self.history)
         self.delReports.pack(side=BOTTOM)
 
@@ -151,17 +152,27 @@ class Root(windows):
 
 
         # Στοίχιση Entries ημερομηνίας και αριθμού κάρτας και των αντίστοιχων επεξηγήσεών τους
-        self.timeLabel = self.texts("Καταχώρησε το διάστημα, για το οποίο\nεπιθυμείς την ανάκτηση στοιχείων:\nYYYY-MM-DD").place(x=30,y=60)
+        # Στοίχιση Entries ημερομηνίας και αριθμού κάρτας και των αντίστοιχων επεξηγήσεών τους
+        self.timeLabel = self.texts(
+            "Καταχώρησε το διάστημα, για το οποίο\nεπιθυμείς την ανάκτηση στοιχείων:\nYYYY-MM-DD").place(x=30, y=60)
         self.apo = self.texts("AΠΟ:").place(x=30, y=140)
         self.apo = self.texts("ΜΕΧΡΙ:").place(x=30, y=170)
         self.arEpass = self.texts("ΑΡΙΘΜΟΣ ΚΑΡΤΑΣ:").place(x=650, y=140)
-        self.idLabel = self.texts("Καταχώρησε τον αριθμό ePass\nτου οχήματος αναζήτησης ή διαγραφής:").place(x=650, y=60)
-        self.datetime_apo=self.Entries()
+        self.idLabel = self.texts("Καταχώρησε τον αριθμό ePass\nτου οχήματος αναζήτησης ή διαγραφής:").place(x=650,
+                                                                                                             y=60)
+
+        self.datetime_apo = self.Entries()
         self.datetime_apo.place(x=110, y=140)
         self.datetime_mexri = self.Entries()
         self.datetime_mexri.place(x=110, y=170)
         self.carId = self.Entries()
         self.carId.place(x=800, y=140)
+
+        # Προσθήκη κουμπιών για επιλογή ημερομηνίας
+        self.apo_button = ttk.Button(self, text="Επιλέξτε Ημερομηνία", command=lambda: self.cal_window(self.datetime_apo))
+        self.apo_button.place(x=220, y=140)
+        self.mexri_button = ttk.Button(self, text="Επιλέξτε Ημερομηνία", command=lambda: self.cal_window(self.datetime_mexri))
+        self.mexri_button.place(x=220, y=170)
 
         # Αντικείμενο Label που εμφανίζει μήνυμα για το αν ένα όχημα περνάει ή όχι.Τοποθετείται περίπου στο κέντρο
         self.result=self.texts('')
@@ -252,6 +263,24 @@ class Root(windows):
         if records: messagebox.showinfo("Πληροφορίες", records)
         else: messagebox.showerror("Σφάλμα!", "Ο Αριθμός Κάρτας είναι λανθασμένος ή δεν υπάρχει καταγεγραμμένο όχημα"
                                               " με τον συγκεκριμένο Αριθμό Κάρτας!")
+
+    def cal_window(self, date_entry):
+        top = tk.Toplevel(self)
+        top.title("Ημερολόγιο")
+
+        global cal
+        cal = Calendar(top, selectmode='day', date_pattern='yyyy-mm-dd')
+        cal.grid(row=0, column=0, padx=10, pady=10)
+
+        ok_button = ttk.Button(top, text="OK", command=lambda: [self.get_date(cal, date_entry), top.destroy()])
+        ok_button.grid(row=1, column=0, padx=10, pady=10)
+
+    def get_date(self, cal, date_entry):
+        date = cal.selection_get()
+        date_entry.delete(0, tk.END)
+        date_entry.insert(0, date.strftime("%Y-%m-%d"))
+
+
 
 begin = IntroWindow()
 root = Root()
